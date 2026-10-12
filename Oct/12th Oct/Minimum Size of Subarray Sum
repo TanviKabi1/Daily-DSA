@@ -1,0 +1,23 @@
+#leetcode que: Given an array of positive integers nums and a positive integer target, our task is to return the minimal length of a subarray whose sum is greater than or equal to target. If there is no such subarray, we have to return 0.
+
+class Solution(object):
+    def minSubArrayLen(self, target, nums):
+        
+        l=0
+        r=0
+        sumofCurrentWindow=0
+        res = float('inf')  # to store the current window ans
+        
+        for r in range(len(nums)):
+            sumofCurrentWindow += nums[r] # adding the elements
+            
+            while sumofCurrentWindow >= target:  # checking if it matches the target
+                res = min(res,r-l+1)  #to compare which is minimum: the surrent window that we found or previous res
+                sumofCurrentWindow -= nums[l] # if target not found slide the window over
+                l+=1
+        
+        return res if res!=float('inf') else 0
+
+
+print(Solution().minSubArrayLen(7, [2,3,1,2,4,3])) # Output: 2
+        

@@ -1,0 +1,25 @@
+
+class Solution(object):
+    def LongestSubArray(self,target, nums):
+        
+        l=0
+        sumofCurrentWindow=0
+        res = 0 # to store the current window ans
+        
+        for r in range(len(nums)):
+            sumofCurrentWindow += nums[r] # adding the elements
+            
+            while sumofCurrentWindow > target:  # checking if it matches the target
+                 
+                sumofCurrentWindow -= nums[l] # if target not found slide the window over
+                l+=1
+
+            if sumofCurrentWindow == target:
+                    res = max(res,r-l+1)  #to compare which is longest: the surrent window that we found or previous res
+        
+        return res 
+
+print(Solution().LongestSubArray(3,[1,2,1,1,1,3,2]))
+
+
+        
