@@ -1,21 +1,17 @@
 class Solution(object):
     def longestOnes(self, nums, target):
-        l = 0
-        zero = 0
-        res = 0
+        l = r = 0
 
         for r in range(len(nums)):
 
-            if nums[r] == 0: # count zero in current window
-                zero += 1
+            if nums[r] == 0: # if zero comes, use one chance
+                target -= 1
 
-            while zero > target: # if zero is more than target, move left
+            if target < 0: # too many zeros, move left
                 if nums[l] == 0:
-                    zero -= 1
+                    target += 1
                 l += 1
 
-            res = max(res, r - l + 1) # update longest window
-
-        return res
+        return r - l + 1
 
 print(Solution().longestOnes([1,1,1,0,0,0,1,1,1,1,0], 2))
