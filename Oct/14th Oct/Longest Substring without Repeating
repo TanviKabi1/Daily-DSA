@@ -1,0 +1,22 @@
+class Solution(object):
+    def lengthOfLongestSubstring(self, sample):
+        l = 0
+        window = {}
+        res = 0
+
+        for r in range(len(sample)):
+
+            window[sample[r]] = window.get(sample[r], 0) + 1 # add current character
+
+            while window[sample[r]] > 1:  # duplicate found, move left
+                window[sample[l]] -= 1
+
+                if window[sample[l]] == 0: # remove the character from the window if its count is 0
+                    del window[sample[l]]
+
+                l += 1
+            res = max(res, r - l + 1)
+
+        return res
+    
+print(Solution().lengthOfLongestSubstring("abcabcbb"))
