@@ -1,0 +1,20 @@
+class Solution(object):
+    def characterReplacement(self, sample, target):
+        l = 0
+        window = {}
+        maxFreq = 0
+        res = 0
+
+        for r in range(len(sample)):
+
+            window[sample[r]] = window.get(sample[r], 0) + 1 # it adds the current character
+
+            maxFreq = max(maxFreq, window[sample[r]]) # to update max frequency character 
+
+            while (r - l + 1) - maxFreq > target: # if window size minus max frequency character is greater than target, shrink window
+                window[sample[l]] -= 1
+                l += 1
+            res = max(res, r - l + 1) # update longest window
+
+        return res
+print(Solution().characterReplacement("AABABBA", 1))
