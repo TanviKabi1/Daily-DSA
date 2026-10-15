@@ -1,0 +1,14 @@
+class Solution(object):
+    def sortArrayByParity(self, nums):
+        n = len(nums)
+
+        for i in range(n):
+            for j in range(n - i - 1): # iterate through the unsorted part of the array
+
+                if nums[j] % 2 == 1 and nums[j + 1] % 2 == 0: # swap if the current element is odd and the next element is even
+                    nums[j], nums[j + 1] = nums[j + 1], nums[j] # swap the elements
+
+        return nums
+
+
+print(Solution().sortArrayByParity([3, 1, 2, 4]))
