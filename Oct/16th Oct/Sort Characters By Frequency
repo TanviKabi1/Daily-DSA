@@ -1,0 +1,22 @@
+class Solution(object):
+    def frequencySort(self, sample):
+        freq = {}
+
+        for ch in sample:
+            freq[ch] = freq.get(ch, 0) + 1 # count frequency of each character
+
+        ans = "" # store the sorted string
+
+        while freq: # while there are characters with non-zero frequency
+            big = None
+
+            for ch in freq:
+                if big is None or freq[ch] > freq[big]: # find character with highest frequency
+                    big = ch
+
+            ans += big * freq[big] # append the character with highest frequency to the answer string
+            del freq[big] # remove the character from the frequency dictionary
+
+        return ans
+    
+print(Solution().frequencySort("tree"))
