@@ -1,0 +1,22 @@
+class Solution(object):
+    def kSmallest(self, nums, target):
+        n = len(nums)
+        ans = []
+
+        for i in range(target):
+
+            small = i  # assume current position is smallest
+
+            for j in range(i + 1, n):
+
+                if nums[j] < nums[small]: # find smaller element
+                    small = j
+
+            nums[i], nums[small] = nums[small], nums[i] # put smallest at current position
+
+            ans.append(nums[i])
+
+        return ans
+
+
+print(Solution().kSmallest([7, 3, 9, 1, 5, 2], 3))
