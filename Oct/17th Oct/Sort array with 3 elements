@@ -1,0 +1,16 @@
+class Solution(object):
+    def sortColors(self, nums):
+        for i in range(1, len(nums)):
+
+            key = nums[i] # current element to insert
+            j = i - 1
+
+            while j >= 0 and nums[j] > key: # move bigger elements to right
+                nums[j + 1] = nums[j] # shift elements to the right to make space for key
+                j -= 1
+
+            nums[j + 1] = key # put key in correct position
+
+        return nums
+
+print(Solution().sortColors([2, 0, 2, 1, 1, 0]))
