@@ -1,1 +1,28 @@
+class Solution(object):
+    def findKthLargest(self, nums, k):
+        target = len(nums) - k # index of kth largest element
+        low = 0
+        high = len(nums) - 1
 
+        while low <= high:
+            pivot = nums[high] # choose last element as pivot
+            i = low
+
+            for j in range(low, high):
+                if nums[j] <= pivot: # move smaller elements left
+                    nums[i], nums[j] = nums[j], nums[i]
+                    i += 1
+
+            nums[i], nums[high] = nums[high], nums[i] # place pivot
+
+            if i == target:
+                return nums[i] # found kth largest
+            elif i < target:
+                low = i + 1 # search right side
+            else:
+                high = i - 1 # search left side
+
+        return -1
+
+
+print(Solution().findKthLargest([3, 2, 1, 5, 6, 4], 2))
