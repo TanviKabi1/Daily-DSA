@@ -1,1 +1,26 @@
+class Solution(object):
+    def sortArray(self, nums):
+        def partition(low, high):
 
+            pivot = nums[high] # choose last element as pivot
+            i = low - 1
+
+            for j in range(low, high):
+                if nums[j] <= pivot: # move smaller elements left
+                    i += 1
+                    nums[i], nums[j] = nums[j], nums[i]
+
+            nums[i + 1], nums[high] = nums[high], nums[i + 1] # place pivot
+            return i + 1
+
+        def quickSort(low, high):
+            if low < high:
+
+                p = partition(low, high) # get pivot position
+                quickSort(low, p - 1) # sort left side
+                quickSort(p + 1, high) # sort right side
+
+        quickSort(0, len(nums) - 1)
+        return nums
+
+print(Solution().sortArray([5, 2, 3, 1]))
