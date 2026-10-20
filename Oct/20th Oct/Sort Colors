@@ -1,1 +1,16 @@
+class Solution(object):
+    def sortColors(self, nums):
+        count = [0, 0, 0]
 
+        for num in nums:
+            count[num] += 1 # count 0s, 1s and 2s
+
+        i = 0
+        for color in range(3):
+            while count[color] > 0:
+                nums[i] = color # place color in order
+                i += 1
+                count[color] -= 1
+
+        return nums
+print(Solution().sortColors([2, 0, 2, 1, 1, 0]))
