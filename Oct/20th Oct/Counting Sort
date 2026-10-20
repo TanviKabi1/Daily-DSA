@@ -1,1 +1,28 @@
+class Solution(object):
+    def sortArray(self, nums):
+        if len(nums) <= 1:
+            return nums
 
+        low = nums[0]
+        high = nums[0]
+
+        for num in nums: # find minimum and maximum
+            if num < low:
+                low = num
+            if num > high:
+                high = num
+
+        count = [0] * (high - low + 1)
+
+        for num in nums:
+            count[num - low] += 1 # count each number
+
+        i = 0
+        for j in range(len(count)):
+            while count[j] > 0:
+                nums[i] = j + low # place number in sorted order
+                i += 1
+                count[j] -= 1
+
+        return nums
+print(Solution().sortArray([4, 2, 2, 8, 3, 3, 1]))
