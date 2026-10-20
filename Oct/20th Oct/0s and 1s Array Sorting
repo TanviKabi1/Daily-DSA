@@ -1,1 +1,20 @@
+class Solution(object):
+    def sortArray(self, nums):
+        count = [0, 0]
 
+        for num in nums:
+            count[num] += 1 # count zeros and ones
+
+        i = 0
+        while count[0] > 0:
+            nums[i] = 0 # place zeros first
+            i += 1
+            count[0] -= 1
+
+        while count[1] > 0:
+            nums[i] = 1 # place ones after zeros
+            i += 1
+            count[1] -= 1
+
+        return nums 
+print(Solution().sortArray([1, 0, 1, 1, 0, 0, 1]))
