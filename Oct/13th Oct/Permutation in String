@@ -34,4 +34,4 @@ class Solution(object):
 
         return False
     
-print(Solution().checkInclusion("ab", "eidaaooo"))
+print(Solution().checkInclusion("ab", "eidbaooo"))

@@ -1,0 +1,24 @@
+'''
+Given an integer array nums and an integer k, return true if there are two distinct 
+indices i and j in the array such that nums[i] == nums[j] and abs(i - j) <= k
+'''
+
+class Solution(object):
+    def containsNearbyDuplicate(self, nums, target):
+        l = 0
+        window = {}
+
+        for r in range(len(nums)): #checking the right pointer of the window
+            if nums[r] in window:
+                return True # duplicate found within target distance
+
+            window[nums[r]] = 1 # adding current element to window
+
+            if r - l >= target:
+                del window[nums[l]]# removing the left element
+                l += 1 # sliding the window forward
+
+        return False
+
+
+print(Solution().containsNearbyDuplicate([1, 2, 3, 1], 3))
