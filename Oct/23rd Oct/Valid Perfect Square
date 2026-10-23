@@ -1,0 +1,18 @@
+class Solution(object):
+    def isPerfectSquare(self, num):
+        left = 1
+        right = num
+
+        while left <= right:
+            mid = left + (right - left) // 2 # find middle
+
+            if mid * mid == num:
+                return True # perfect square
+
+            if mid * mid < num:
+                left = mid + 1 # search bigger
+            else:
+                right = mid - 1 # search smaller
+
+        return False 
+print(Solution().isPerfectSquare(16))
