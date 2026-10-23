@@ -1,0 +1,18 @@
+class Solution(object):
+    def mySqrt(self, target):
+        left = 0
+        right = target
+
+        while left <= right:
+            mid = left + (right - left) // 2 # find middle
+
+            if mid * mid == target:
+                return mid # exact square
+
+            if mid * mid < target:
+                left = mid + 1 # search bigger
+            else:
+                right = mid - 1 # search smaller
+
+        return right 
+print(Solution().mySqrt(8))
