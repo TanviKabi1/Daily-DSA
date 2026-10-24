@@ -1,1 +1,22 @@
+class Solution(object):
+    def floorCeil(self, nums, x):
+        left = 0
+        right = len(nums) - 1
+        floor = -1
+        ceil = -1
 
+        while left <= right:
+            mid = left + (right - left) // 2 # find middle
+
+            if nums[mid] == x:
+                return [nums[mid], nums[mid]] # both are same
+
+            if nums[mid] < x:
+                floor = nums[mid] # possible floor
+                left = mid + 1 # look for bigger value
+            else:
+                ceil = nums[mid] # possible ceiling
+                right = mid - 1 # look for smaller value
+
+        return [floor, ceil]
+print(Solution().floorCeil([1, 2, 4, 6, 8, 10], 5))
