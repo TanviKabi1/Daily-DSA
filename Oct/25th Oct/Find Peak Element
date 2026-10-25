@@ -1,0 +1,19 @@
+class Solution(object):
+    def findPeakElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        left = 0
+        right = len(nums) - 1
+
+        while left < right:
+            mid = left + (right - left) // 2 # find middle
+
+            if nums[mid] < nums[mid + 1]:
+                left = mid + 1 # peak is on the right
+            else:
+                right = mid # peak is on the left
+
+        return left # peak position
+print(Solution().findPeakElement([1, 2, 3, 1]))
