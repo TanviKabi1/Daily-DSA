@@ -1,0 +1,14 @@
+class Solution(object):
+    def rowWithMax1s(self, matrix):
+        row = 0
+        col = len(matrix[0]) - 1
+        ans = -1
+
+        while row < len(matrix) and col >= 0:
+            if matrix[row][col] == 1:
+                ans = row #this row has more 1s
+                col -= 1 #check further left
+            else:
+                row += 1 #move to next row
+
+        return ans
