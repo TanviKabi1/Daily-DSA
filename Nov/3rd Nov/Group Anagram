@@ -1,0 +1,24 @@
+class Solution(object):
+    def groupAnagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        groups = {}  #storing anagrams together
+
+        for word in strs:
+            freq = [0] * 26  #frequency of each lowercase letter
+
+            for ch in word:
+                freq[ord(ch) - 97] += 1  #counting each character
+
+            key = tuple(freq)  #using frequency as the group key
+
+            if key not in groups:
+                groups[key] = []
+
+            groups[key].append(word)  #adding word to its anagram group
+
+        return list(groups.values())
+
+print(Solution.groupAnagrams(Solution(),["eat", "tea", "tan", "ate", "nat", "bat"]))
