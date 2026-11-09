@@ -1,0 +1,23 @@
+class Solution(object):
+    def countVowelsConsonants(self, s):
+        """
+        :type s: str
+        :rtype: List[int]
+        """
+        vowels = 0
+        consonants = 0
+
+        for ch in s:
+            if 'A' <= ch <= 'Z':
+                ch = chr(ord(ch) + 32)  #converting uppercase to lowercase
+
+            if 'a' <= ch <= 'z':  #checking whether it is a letter
+                if ch == 'a' or ch == 'e' or ch == 'i' or ch == 'o' or ch == 'u':
+                    vowels += 1  #counting vowels
+                else:
+                    consonants += 1  #counting consonants
+
+        return [vowels, consonants]
+
+
+print(Solution().countVowelsConsonants("Hello World")) 
