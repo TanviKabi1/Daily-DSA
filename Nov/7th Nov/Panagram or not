@@ -1,0 +1,16 @@
+class Solution(object):
+    def checkIfPangram(self, sentence):
+        """
+        :type sentence: str
+        :rtype: bool
+        """
+        letters = set()  #storing unique letters
+
+        for ch in sentence:
+            if 'a' <= ch <= 'z':
+                letters.add(ch)  #adding lowercase letters
+
+        return len(letters) == 26  #checking if all alphabets are present
+
+
+print(Solution().checkIfPangram("thequickbrownfoxjumpsoverthelazydog")) 
