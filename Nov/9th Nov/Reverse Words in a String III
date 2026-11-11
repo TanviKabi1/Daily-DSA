@@ -1,0 +1,20 @@
+class Solution(object):
+    def reverseWords(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        words = s.split()  # splitting the string into words
+        result = []
+
+        for word in words:
+            rev = []  # storing reversed characters
+
+            for i in range(len(word) - 1, -1, -1):
+                rev.append(word[i])  # adding characters from end to start
+
+            result.append(''.join(rev))  # joining reversed characters
+
+        return ' '.join(result)  # joining all reversed words
+
+print(Solution().reverseWords("Let's take LeetCode"))  
