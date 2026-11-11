@@ -1,0 +1,24 @@
+class Solution(object):
+    def reverseVowels(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        chars = list(s)  # converting string into a list
+        vowels = "aeiouAEIOU"
+
+        l = 0
+        r = len(chars) - 1
+
+        while l < r:
+            if chars[l] not in vowels:  # skipping non-vowels from left
+                l += 1
+            elif chars[r] not in vowels:  # skipping non-vowels from right
+                r -= 1
+            else:
+                chars[l], chars[r] = chars[r], chars[l]  # swapping vowels
+                l += 1
+                r -= 1
+
+        return ''.join(chars)  # joining characters into a string
+print(Solution().reverseVowels("hello"))     
