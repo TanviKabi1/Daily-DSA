@@ -15,6 +15,4 @@ class Solution(object):
             ans.append(score)
 
         return ans
-
-
 print(Solution().prefixScores(["abc", "ab", "bc", "b"]))
