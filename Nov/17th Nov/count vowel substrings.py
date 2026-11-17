@@ -13,6 +13,4 @@ class Solution(object):
                     ans += 1  #all vowels found
 
         return ans
-
-
 print(Solution().countVowels("aeiouu"))
