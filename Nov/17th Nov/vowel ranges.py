@@ -12,6 +12,4 @@ class Solution(object):
             ans.append(pref[r + 1] - pref[l])  #get range count
 
         return ans
-
-
 print(Solution().vowelRanges(["aba", "bcb", "ece", "aa", "e"], [[0, 2], [1, 4], [1, 1]]))
